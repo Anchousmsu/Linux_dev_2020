@@ -87,6 +87,7 @@ int main(int argc, char *argv[])
     WINDOW *win;
     int c = 0;
     int first, last, left, right;
+    int height, width;
 
     if (argc < 2)
     {
@@ -125,8 +126,8 @@ int main(int argc, char *argv[])
 
     // array initialization
     first = left = 0;
-    last = num_lines - 3;
-    right = num_cols - 3 - SHIFT_STRING;
+    last = height = num_lines - DX;
+    right = width = num_cols - DX - SHIFT_STRING;
     char *split = strtok_new(buffer,"\n");
     int size_lines = 2, n_lines = 0;
     wprintw(win, "\n");
@@ -178,6 +179,22 @@ int main(int argc, char *argv[])
                     right--;
                     print_cur_lines(win, lines, first, last, left, right);
                 }
+                break;
+            case KEY_PPAGE:
+                if (first - height >= 0)
+                    first = first - height;
+                else
+                    first = 0;
+                last = first + height;
+                    print_cur_lines(win, lines, first, last, left, right);
+                break;
+            case KEY_NPAGE:
+                if (last + height <= n_lines)
+                    last = last + height;
+                else
+                    last = n_lines;
+                first = last - height;
+                    print_cur_lines(win, lines, first, last, left, right);
                 break;
             default:
                 break;
