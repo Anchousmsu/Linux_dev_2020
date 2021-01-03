@@ -5,6 +5,7 @@
 
 #define DX 3
 #define NUM_LEN 4
+#define SHIFT_STRING 6
 #define KILO 1024
 
 
@@ -52,13 +53,25 @@ char *strtok_new(char * string, char const * delimiter)
     return res;
 }
 
-
 void print_cur_lines(WINDOW *win, char **lines, int first, int last, int left, int right)
 {
     for (int i = first; i <= last; i++)
     {
         int n_line = i + 1;
-        wprintw(win, "%s%d: %s\n", shift_line(n_line), n_line, lines[i]);
+        int str_len = strlen(lines[i]) - 1;
+        if (left > str_len)
+        {
+            wprintw(win, "%s%d:\n", shift_line(n_line), n_line);
+            continue;
+        }
+        int cur_len;
+        if (right < str_len)
+            cur_len = right - left + 1;
+        else
+            cur_len = str_len - left + 1;
+        char *cur_line = malloc((cur_len + 1) * sizeof(char));
+        memcpy(cur_line, &lines[i][left], cur_len);
+        wprintw(win, "%s%d: %s\n", shift_line(n_line), n_line, cur_line);
     }
     box(win, 0, 0);
     wrefresh(win);
@@ -81,7 +94,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // чтение файла
+    // read file
     infile = fopen(argv[1], "r");
     if(!infile)
         return 1;
@@ -97,7 +110,7 @@ int main(int argc, char *argv[])
     fread(buffer, sizeof(char), size_memory, infile);
     fclose(infile);
 
-    // подготовка ncurses
+    // preparation ncurses
     setlocale(LC_ALL, "");
     initscr();
     noecho();
@@ -110,10 +123,10 @@ int main(int argc, char *argv[])
     keypad(win, TRUE);
     scrollok (win, TRUE);
 
-    // заполнение массива строк и вывод первых в окно
+    // array initialization
     first = left = 0;
     last = num_lines - 3;
-    right = num_cols - 3;
+    right = num_cols - 3 - SHIFT_STRING;
     char *split = strtok_new(buffer,"\n");
     int size_lines = 2, n_lines = 0;
     wprintw(win, "\n");
@@ -127,17 +140,12 @@ int main(int argc, char *argv[])
         }
         lines[n_lines] = split;
         split = strtok_new(NULL,"\n");
-        if (n_lines < num_lines - 2)
-        {
-            int n_line = n_lines + 1;
-            wprintw(win, "%s%d: %s\n", shift_line(n_line), n_line, lines[n_lines]);
-        }
     }
     n_lines--;
-    box(win, 0, 0);
-    wrefresh(win);
 
-    // обработка нажатия на клавиши
+    print_cur_lines(win, lines, first, last, left, right);
+
+    // Buttons
     while ((c = wgetch(win)) != 27)
     {
         switch(c)
@@ -147,10 +155,7 @@ int main(int argc, char *argv[])
                 {
                     last++;
                     first++;
-                    int n_line = last + 1;
-                    wprintw(win, "%s%d: %s\n", shift_line(n_line), n_line, lines[last]);
-                    box(win, 0, 0);
-                    wrefresh(win);
+                    print_cur_lines(win, lines, first, last, left, right);
                 }
                 break;
             case KEY_UP:
@@ -158,6 +163,19 @@ int main(int argc, char *argv[])
                 {
                     first--;
                     last--;
+                    print_cur_lines(win, lines, first, last, left, right);
+                }
+                break;
+            case KEY_RIGHT:
+                left++;
+                right++;
+                print_cur_lines(win, lines, first, last, left, right);
+                break;
+            case KEY_LEFT:
+                if (left > 0)
+                {
+                    left--;
+                    right--;
                     print_cur_lines(win, lines, first, last, left, right);
                 }
                 break;
