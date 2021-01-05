@@ -61,7 +61,7 @@ int main(int argc, char **argv)
     ovector = pcre2_get_ovector_pointer(match_data);
 
     for (i = 0; i < rc; i++)
-        printf("%2ld: %.*s\n", ovector[2*i], 
+        printf("%2ld: %.*s\n", ovector[2*i],
 			     (int)(ovector[2*i+1] - ovector[2*i]),
 			     subject + ovector[2*i]);
 
