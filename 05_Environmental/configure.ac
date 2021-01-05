@@ -11,9 +11,11 @@ AC_CONFIG_HEADERS([config.h])
 AC_PROG_CC
 
 # Checks for libraries.
+AC_CHECK_LIB([ncuresesw], [initstr])
 
 # Checks for header files.
 AC_CHECK_HEADERS([string.h])
+AC_CHECK_HEADERS([ncurses.h])
 
 # Checks for typedefs, structures, and compiler characteristics.
 
