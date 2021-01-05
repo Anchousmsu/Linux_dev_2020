@@ -12,6 +12,7 @@ AC_PROG_CC
 
 # Checks for libraries.
 AC_CHECK_LIB([ncursesw], [initscr], [], AC_MSG_ERROR[Curses is needed])
+AC_CHECK_LIB([pcre2-8], [pcre2_compile_8], [], AC_MSG_ERROR[Pcre2 is needed])
 
 # Checks for header files.
 AC_CHECK_HEADERS([string.h])
