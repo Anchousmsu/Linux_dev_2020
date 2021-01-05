@@ -1,6 +1,7 @@
-GENERATES = prog README
+GENERATES = prog prog-a prog-so README
 TRASH = *.o *~ o.*
-CFLAGS = -Wall
+CFLAGS = -fPIC -Wall
+LIBS = liboutput_static.a liboutput.so
 
 all:    README prog
 
@@ -11,8 +12,23 @@ README: prog
 
 fun.o:  outlib.h
 
+liboutput_static.a: const.o fun.o
+	ar rcs $@ $^
+
+liboutput.so: const.o fun.o
+	$(CC) -shared $^ -o $@
+
+prog-a: prog.o liboutput_static.a
+	$(CC) -L. $< -loutput_static -lncurses -o $@
+
+prog-so: prog.o liboutput.so
+	$(CC) -L. $< -loutput -lncurses -o $@
+
 clean:
 	rm -f $(TRASH)
 
 distclean:	clean
 	rm -rf $(GENERATES)
+
+allclean:	clean distclean
+	rm -rf $(LIBS)
