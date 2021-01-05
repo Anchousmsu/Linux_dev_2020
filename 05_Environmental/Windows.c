@@ -33,7 +33,12 @@ void matching(char *inA, char *inB, WINDOW *win)
 
 	wprintw(win, "\n \'%s\' : \'%s\'\n", inA, inB);
 
+#ifdef UTF
     re = pcre2_compile_8(pattern, PCRE2_ZERO_TERMINATED, PCRE2_UCP, &errnum, &erroffs, NULL);
+#else
+	re = pcre2_compile_8(pattern, PCRE2_ZERO_TERMINATED, 0, &errnum, &erroffs, NULL);
+#endif
+
 	if (re == NULL) {
         PCRE2_UCHAR buffer[256];
         pcre2_get_error_message_8(errnum, buffer, sizeof(buffer));

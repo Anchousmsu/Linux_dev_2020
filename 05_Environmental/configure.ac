@@ -22,5 +22,13 @@ AC_CHECK_HEADERS([ncurses.h], [], AC_MSG_ERROR[No curses.h found])
 
 # Checks for library functions.
 
+AC_ARG_WITH([UTF],
+    AS_HELP_STRING([--without-UTF], [Shutdown PCRE2_UCP flag]))
+
+AS_IF([test "x$with_UTF" != "xno"], [
+    AC_DEFINE(UTF, [], [PCRE2_UCP flag])
+])
+
+
 AC_CONFIG_FILES([Makefile])
 AC_OUTPUT

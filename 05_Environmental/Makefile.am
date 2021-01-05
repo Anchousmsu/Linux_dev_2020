@@ -1,5 +1,5 @@
 bin_PROGRAMS = Windows
 Windows_SOURCES = Windows.c
 
-gitclean:
+allclean:
 	git clean -df
