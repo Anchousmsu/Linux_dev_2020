@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <string.h>
 #include <errno.h>
-#include "config.h"
 
 typedef int (* func)(int, const char *, int);
 
