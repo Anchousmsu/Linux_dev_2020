@@ -1,0 +1,41 @@
+execve("/bin/rm", ["rm", "file1"], 0x7ffcd17bbe60 /* 68 vars */) = 0
+brk(NULL)                               = 0x564a0a54b000
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+access("/etc/ld.so.preload", R_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/etc/ld.so.cache", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=136639, ...}) = 0
+mmap(NULL, 136639, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fb64756b000
+close(3)                                = 0
+access("/etc/ld.so.nohwcap", F_OK)      = -1 ENOENT (No such file or directory)
+openat(AT_FDCWD, "/lib/x86_64-linux-gnu/libc.so.6", O_RDONLY|O_CLOEXEC) = 3
+read(3, "\177ELF\2\1\1\3\0\0\0\0\0\0\0\0\3\0>\0\1\0\0\0\20\35\2\0\0\0\0\0@\0\0\0\0\0\0\0\20\353\36\0\0\0\0\0\0\0\0\0@\0008\0\n\0@\0I\0H\0\6\0\0\0\4\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0@\0\0\0\0\0\0\0000\2\0\0\0\0\0\0000\2\0\0\0\0\0\0\10\0\0\0\0\0\0\0\3\0\0\0\4\0\0\0\360\334\33\0\0\0\0\0\360\334\33\0\0\0\0\0\360\334\33\0\0\0\0\0\34\0\0\0\0\0\0\0\34\0\0\0\0\0\0\0\20\0\0\0\0\0\0\0\1\0\0\0\5\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0`j\36\0\0\0\0\0`j\36\0\0\0\0\0\0\0 \0\0\0\0\0\1\0\0\0\6\0\0\0\30v\36\0\0\0\0\0\30v>\0\0\0\0\0\30v>\0\0\0\0\0HR\0\0\0\0\0\0\310\224\0\0\0\0\0\0\0\0 \0\0\0\0\0\2\0\0\0\6\0\0\0\200\253\36\0\0\0\0\0\200\253>\0\0\0\0\0\200\253>\0\0\0\0\0\340\1\0\0\0\0\0\0\340\1\0\0\0\0\0\0\10\0\0\0\0\0\0\0\4\0\0\0\4\0\0\0p\2\0\0\0\0\0\0p\2\0\0\0\0\0\0p\2\0\0\0\0\0\0D\0\0\0\0\0\0\0D\0\0\0\0\0\0\0\4\0\0\0\0\0\0\0\7\0\0\0\4\0\0\0\30v\36\0\0\0\0\0\30v>\0\0\0\0\0\30v>\0\0\0\0\0\20\0\0\0\0\0\0\0\220\0\0\0\0\0\0\0\10\0\0\0\0\0\0\0P\345td\4\0\0\0\f\335\33\0\0\0\0\0\f\335\33\0\0\0\0\0\f\335\33\0\0\0\0\0\344Y\0\0\0\0\0\0\344Y\0\0\0\0\0\0\4\0\0\0\0\0\0\0Q\345td\6\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\20\0\0\0\0\0\0\0R\345td\4\0\0\0\30v\36\0\0\0\0\0\30v>\0\0\0\0\0\30v>\0\0\0\0\0\3509\0\0\0\0\0\0\3509\0\0\0\0\0\0\1\0\0\0\0\0\0\0\4\0\0\0\24\0\0\0\3\0\0\0GNU\0\316E\16\260\32^Z\314|\347\270\302c;\2\314\20\2233\236\4\0\0\0\20\0\0\0\1\0\0\0GNU\0\0\0\0\0\3\0\0\0\2\0\0\0\0\0\0\0\0\0\0\0\363\3\0\0\n\0\0\0\0\1\0\0\16\0\0\0\0000\20D\240 \2\1\210\3\346\220\305E\214\0\304\0X\0\7\204\0p\302\200\0\r\212\fA\4\20\0\210@2\10*@\210T<- \0162H&\204\300\214\4\10\0\2\2\16\241\254\32\6f\310\0\3002\0\300\4P\t \201\10\204\v  ($\0\4 Z\0\20X\200\312DB(\0\6\200\0208C\0 @\200\0IP\0Q\212@\22\0\0\0\0\10\0\0\21\20", 832) = 832
+fstat(3, {st_mode=S_IFREG|0755, st_size=2030928, ...}) = 0
+mmap(NULL, 8192, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_ANONYMOUS, -1, 0) = 0x7fb647569000
+mmap(NULL, 4131552, PROT_READ|PROT_EXEC, MAP_PRIVATE|MAP_DENYWRITE, 3, 0) = 0x7fb646f73000
+mprotect(0x7fb64715a000, 2097152, PROT_NONE) = 0
+mmap(0x7fb64735a000, 24576, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_DENYWRITE, 3, 0x1e7000) = 0x7fb64735a000
+mmap(0x7fb647360000, 15072, PROT_READ|PROT_WRITE, MAP_PRIVATE|MAP_FIXED|MAP_ANONYMOUS, -1, 0) = 0x7fb647360000
+close(3)                                = 0
+arch_prctl(ARCH_SET_FS, 0x7fb64756a540) = 0
+mprotect(0x7fb64735a000, 16384, PROT_READ) = 0
+mprotect(0x564a08701000, 4096, PROT_READ) = 0
+mprotect(0x7fb64758d000, 4096, PROT_READ) = 0
+munmap(0x7fb64756b000, 136639)          = 0
+brk(NULL)                               = 0x564a0a54b000
+brk(0x564a0a56c000)                     = 0x564a0a56c000
+openat(AT_FDCWD, "/usr/lib/locale/locale-archive", O_RDONLY|O_CLOEXEC) = 3
+fstat(3, {st_mode=S_IFREG|0644, st_size=4252928, ...}) = 0
+mmap(NULL, 4252928, PROT_READ, MAP_PRIVATE, 3, 0) = 0x7fb646b64000
+close(3)                                = 0
+ioctl(0, TCGETS, {B38400 opost isig icanon echo ...}) = 0
+newfstatat(AT_FDCWD, "file1", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_SYMLINK_NOFOLLOW) = 0
+geteuid()                               = 1000
+newfstatat(AT_FDCWD, "file1", {st_mode=S_IFREG|0644, st_size=0, ...}, AT_SYMLINK_NOFOLLOW) = 0
+faccessat(AT_FDCWD, "file1", W_OK)      = 0
+unlinkat(AT_FDCWD, "file1", 0)          = 0
+lseek(0, 0, SEEK_CUR)                   = -1 ESPIPE (Illegal seek)
+close(0)                                = 0
+close(1)                                = 0
+close(2)                                = 0
+exit_group(0)                           = ?
++++ exited with 0 +++
