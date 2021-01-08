@@ -4,6 +4,7 @@
 AC_PREREQ([2.69])
 AC_INIT([FULL-PACKAGE-NAME], [VERSION], [BUG-REPORT-ADDRESS])
 AM_INIT_AUTOMAKE([foreign])
+PKG_CHECK_MODULES([CHECK], [check])
 LT_INIT([disable-static])
 AC_CONFIG_SRCDIR([src/libbuf.c])
 AC_CONFIG_HEADERS([config.h])
@@ -24,5 +25,5 @@ AC_CHECK_TYPES([ptrdiff_t])
 AC_FUNC_MALLOC
 AC_FUNC_REALLOC
 
-AC_CONFIG_FILES([Makefile src/Makefile])
+AC_CONFIG_FILES([Makefile src/Makefile tests/Makefile])
 AC_OUTPUT
