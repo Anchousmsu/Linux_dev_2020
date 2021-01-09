@@ -4,6 +4,7 @@
 AC_PREREQ([2.69])
 AC_INIT([Number guessing], [0.0], [NUT1997020501@yandex.ru])
 AM_INIT_AUTOMAKE([foreign])
+# DX_INIT_DOXYGEN(guessnumber)
 AC_CONFIG_SRCDIR([guessnumber.c])
 AC_CONFIG_HEADERS([config.h])
 
@@ -20,5 +21,6 @@ AC_CHECK_HEADERS([libintl.h locale.h stdlib.h string.h])
 # Checks for library functions.
 AC_CHECK_FUNCS([setlocale])
 
-AC_CONFIG_FILES([Makefile])
+AC_CONFIG_FILES([Makefile
+				 Doxyfile])
 AC_OUTPUT

@@ -1,6 +1,8 @@
 bin_PROGRAMS = guessnumber
 pkgdata_DATA=ru_RU/LC_MESSAGES/guessnumber.mo
 
+	@DX_RULES@
+
 guessnumber.o: guessnumber.c
 
 ru_RU/LC_MESSAGES/guessnumber.mo: ru.po

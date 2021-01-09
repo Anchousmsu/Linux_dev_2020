@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: guessnumber 0.0\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2021-01-09 16:18+0300\n"
+"POT-Creation-Date: 2021-01-09 19:38+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: Stepko Ann <NUT1997020501@yandex.ru>\n"
 "Language-Team: RU <NUT1997020501@yandex.ru>\n"
@@ -17,36 +17,49 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: guessnumber.c:73
+#: guessnumber.c:15
+msgid ""
+"Usage: ./guessnumber [OPTION]\n"
+"\t\n"
+"\t-r\t\t\tenable roman numbers\n"
+"\t\n"
+"EXECUTABLE should accept '--help' options and produce output on\n"
+"stdout:\n"
+"\t\n"
+"\t-h, --help\t\thelp option string\n"
+"\t"
+msgstr ""
+
+#: guessnumber.c:114
 #, fuzzy, c-format
 msgid "Think of a number from %s to %s\n"
-msgstr "Задумайте число от %s до %s\n"
+msgstr "Задумайте число от 1 до 100\n"
 
-#: guessnumber.c:75
+#: guessnumber.c:116
 #, c-format
 msgid "Think of a number from 1 to 100\n"
 msgstr "Задумайте число от 1 до 100\n"
 
-#: guessnumber.c:81
+#: guessnumber.c:122
 #, fuzzy, c-format
 msgid "The number greater than %s?\n"
-msgstr "Число больше чем %s?\n"
+msgstr "Число больше чем %d?\n"
 
-#: guessnumber.c:83
+#: guessnumber.c:124
 #, c-format
 msgid "The number greater than %d?\n"
 msgstr "Число больше чем %d?\n"
 
-#: guessnumber.c:85
+#: guessnumber.c:126
 msgid "yes"
 msgstr "да"
 
-#: guessnumber.c:92
+#: guessnumber.c:133
 #, fuzzy, c-format
 msgid "The answer: %s\n"
-msgstr "Ответ: %s\n"
+msgstr "Ответ: %d\n"
 
-#: guessnumber.c:94
+#: guessnumber.c:135
 #, c-format
 msgid "The answer: %d\n"
 msgstr "Ответ: %d\n"
