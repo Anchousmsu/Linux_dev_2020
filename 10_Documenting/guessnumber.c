@@ -5,6 +5,7 @@
 #include <string.h>
 #include <libintl.h>
 #include <locale.h>
+#include "config.h"
 
 /*!
 \def _(STRING)
@@ -17,10 +18,11 @@ Usage: ./guessnumber [OPTION]\n\
 	\n\
 	-r			enable roman numbers\n\
 	\n\
-EXECUTABLE should accept \'--help\' options and produce output on\n\
+EXECUTABLE should accept \'--help\' and \'--version\' options and produce output on\n\
 stdout:\n\
 	\n\
 	-h, --help		help option string\n\
+	-v, --version	version option string\n\
 	")
 
 /*!
@@ -100,15 +102,20 @@ int main(int argc, char *argv[])
 
 	int flag_roman = 0;
 
-	if (argc >= 2 && !strncmp(argv[1], "-r", 2))
-	{
-		flag_roman = 1;
-		readRomanTableFile("romantable.txt");
-	}
-	else if (argc >= 2 && (!strncmp(argv[1], "--help", 6) || !strncmp(argv[1], "-h", 2)))
-	{
-		return printf("%s\n", HELP);
-	}
+	for (int i = 1; i < argc; i++)
+		if (!strncmp(argv[i], "-r", 2))
+		{
+			flag_roman = 1;
+			readRomanTableFile("romantable.txt");
+		}
+		else if (!strncmp(argv[i], "--help", 6) || !strncmp(argv[i], "-h", 2))
+		{
+			return printf("%s\n", HELP);
+		}
+		else if (!strncmp(argv[i], "--version", 9) || !strncmp(argv[i], "-v", 2))
+		{
+			return printf("guessnumber %s\n", VERSION);
+		}
 
 	if (flag_roman)
 		printf(_("Think of a number from %s to %s\n"), toRoman(1), toRoman(100));
