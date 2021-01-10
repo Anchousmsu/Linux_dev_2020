@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <libgen.h>
 #include <libintl.h>
 #include <locale.h>
 
@@ -8,12 +9,8 @@
 
 int main(int argc, char *argv[])
 {
-	char *dir = dirname(realpath(argv[0], NULL));
 	setlocale(LC_ALL, "");
-	if (getenv("PO_LOCAL"))
-		bindtextdomain("guessnumber", dir);
-	else
-		bindtextdomain("guessnumber", "/usr/share/licale");
+	bindtextdomain("guessnumber", LOCALEDIR);
 	textdomain("guessnumber");
 
 	printf(_("Think of a number from 1 to 100\n"));

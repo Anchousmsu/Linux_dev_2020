@@ -1,7 +1,7 @@
 bin_PROGRAMS = guessnumber
 pkgdata_DATA=ru_RU/LC_MESSAGES/guessnumber.mo
-
-guessnumber.o: guessnumber.c
+AM_CFLAGS=-D LOCALEDIR='"$(localedir)"'
+pkgdatadir=$(localedir)/ru_RU/LC_MESSAGES
 
 ru_RU/LC_MESSAGES/guessnumber.mo: ru.po
 	mkdir -p `dirname $@`

@@ -2,7 +2,7 @@
 # Process this file with autoconf to produce a configure script.
 
 AC_PREREQ([2.69])
-AC_INIT([Number guessing], [0.0], [NUT1997020501@yandex.ru])
+AC_INIT([Number guessing], [0.0], [NUT1997020501@yandex.ru], [guessnumber])
 AM_INIT_AUTOMAKE([foreign])
 AC_CONFIG_SRCDIR([guessnumber.c])
 AC_CONFIG_HEADERS([config.h])
